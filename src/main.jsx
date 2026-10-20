@@ -5,7 +5,7 @@ import App from './App.jsx';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/seo_pages_check">
+    <BrowserRouter basename="/seo_pages_check/">
       <App />
     </BrowserRouter>
   </React.StrictMode>
