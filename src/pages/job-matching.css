@@ -1,0 +1,54 @@
+
+/* o1JobAid Job Matching Analysis */
+
+.jm-page {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  background: #fbfdfb;
+  color: #12261e;
+  line-height: 1.6;
+}
+
+.jm-page * {
+  box-sizing: border-box;
+}
+
+.jm-page a {
+  text-decoration: none;
+}
+
+.jm-shell {
+  max-width: 1190px;
+  margin: auto;
+  padding: 0 26px;
+}
+
+.jm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid #dce9e0;
+}
+
+/* Match the Resume Builder color palette. */
+.jm-page {
+  --jm-green: #008a3a;
+  --jm-ink: #12261e;
+  --jm-muted: #53675d;
+  --jm-border: #dce9e0;
+}
+.jm-page p, .jm-page small { color: var(--jm-muted); }
+.jm-page a, .jm-eyebrow, .jm-kicker, .jm-step-number, .jm-score strong { color: var(--jm-green); }
+.jm-btn-primary { background: var(--jm-green); color: #fff !important; }
+.jm-btn-outline, .jm-card, .jm-hero-visual, .jm-faqs details { background: #fff; border: 1px solid var(--jm-border); }
+.jm-btn-outline { color: var(--jm-ink) !important; }
+.jm-section-tint, .jm-score-explainer { background: #eef8f0; }
+.jm-bar { background: #dce9e0; height: 8px; }
+.jm-bar i { display: block; height: 100%; background: var(--jm-green); }
+.jm-final-cta { background: linear-gradient(110deg, #008e45, #087c78); color: #fff; }
+.jm-final-cta p { color: #e0f7e9; }
+.jm-btn-light { background: #fff; color: #006c38 !important; }
+/* FAQ text provides the disclosure control without an icon. */
+.jm-faqs summary { list-style: none; cursor: pointer; }
+.jm-faqs summary::-webkit-details-marker { display: none; }
