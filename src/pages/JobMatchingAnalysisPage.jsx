@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './job-matching.css';
 
-const JOBS_URL = 'https://o1jobaid.com/app/jobs-view';
+const JOBS_URL = 'https://o1jobaid.com/app/jobs';
 const faqs = [
   ['What is job matching analysis?', 'Job matching analysis compares your profile with the requirements in a specific job listing. o1 Job Aid shows an overall match percentage, relevant matched skills, and skill gaps to help you evaluate the opportunity.'],
   ['How does o1 Job Aid calculate my job match score?', 'The analysis considers skills supported by your profile alongside relevant experience and education requirements from the job listing. The overall percentage summarizes the alignment, while the breakdown helps you understand the result.'],

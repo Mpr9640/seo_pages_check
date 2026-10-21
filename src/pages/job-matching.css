@@ -1,54 +1,55 @@
+.jm-step-number { display: inline-block; margin-bottom: 15px; color: var(--jm-green); font-size: 27px; font-weight: 850; line-height: 1.2; }
+.jm-centered { margin-top: 28px; text-align: center; }
+.jm-benefits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.jm-benefits > div { padding: 24px; border: 1px solid var(--jm-border); border-radius: 16px; background: #fff; }
+.jm-score-explainer { padding: 40px; border: 1px solid var(--jm-border); border-radius: 20px; background: #eef8f0; }
+.jm-score-explainer > div { max-width: 880px; }
+.jm-score-explainer h2 { margin-top: 0; }
+.jm-score-explainer p:last-child { margin-bottom: 0; }
 
-/* o1JobAid Job Matching Analysis */
-
-.jm-page {
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-  background: #fbfdfb;
-  color: #12261e;
-  line-height: 1.6;
-}
-
-.jm-page * {
-  box-sizing: border-box;
-}
-
-.jm-page a {
-  text-decoration: none;
-}
-
-.jm-shell {
-  max-width: 1190px;
-  margin: auto;
-  padding: 0 26px;
-}
-
-.jm-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  padding: 22px 0;
-  border-bottom: 1px solid #dce9e0;
-}
-
-/* Match the Resume Builder color palette. */
-.jm-page {
-  --jm-green: #008a3a;
-  --jm-ink: #12261e;
-  --jm-muted: #53675d;
-  --jm-border: #dce9e0;
-}
-.jm-page p, .jm-page small { color: var(--jm-muted); }
-.jm-page a, .jm-eyebrow, .jm-kicker, .jm-step-number, .jm-score strong { color: var(--jm-green); }
-.jm-btn-primary { background: var(--jm-green); color: #fff !important; }
-.jm-btn-outline, .jm-card, .jm-hero-visual, .jm-faqs details { background: #fff; border: 1px solid var(--jm-border); }
-.jm-btn-outline { color: var(--jm-ink) !important; }
-.jm-section-tint, .jm-score-explainer { background: #eef8f0; }
-.jm-bar { background: #dce9e0; height: 8px; }
-.jm-bar i { display: block; height: 100%; background: var(--jm-green); }
-.jm-final-cta { background: linear-gradient(110deg, #008e45, #087c78); color: #fff; }
-.jm-final-cta p { color: #e0f7e9; }
-.jm-btn-light { background: #fff; color: #006c38 !important; }
-/* FAQ text provides the disclosure control without an icon. */
-.jm-faqs summary { list-style: none; cursor: pointer; }
+/* FAQ: text-only disclosure, matching the existing design. */
+.jm-faqs { display: grid; gap: 11px; max-width: 940px; }
+.jm-faqs details { padding: 0 21px; border: 1px solid var(--jm-border); border-radius: 13px; background: #fff; }
+.jm-faqs summary { padding: 18px 0; color: var(--jm-ink); font-size: 15px; font-weight: 750; line-height: 1.5; list-style: none; cursor: pointer; }
 .jm-faqs summary::-webkit-details-marker { display: none; }
+.jm-faqs summary:hover { color: var(--jm-green); }
+.jm-faqs details[open] { border-color: #96c9a5; }
+.jm-faqs details[open] summary { color: var(--jm-green); }
+.jm-faqs details p { margin: 0 0 19px; font-size: 14px; line-height: 1.8; }
+
+/* Final call to action */
+.jm-final-cta { margin: 8px 0 64px; padding: 52px 28px; border-radius: 22px; background: linear-gradient(110deg, #008e45, #087c78); color: #fff; text-align: center; }
+.jm-final-cta h2 { max-width: 760px; margin: 0 auto 16px; color: #fff; }
+.jm-final-cta p { max-width: 680px; margin: 0 auto; color: #e0f7e9; }
+.jm-final-cta .jm-actions { justify-content: center; }
+.jm-page .jm-btn-light { background: #fff; color: #006c38; }
+.jm-final-cta a:focus-visible { outline-color: #fff; }
+
+/* Tablet and mobile */
+@media (max-width: 1000px) {
+  .jm-hero { grid-template-columns: 1fr; gap: 32px; padding: 44px 0 56px; }
+  .jm-hero-visual { width: 100%; max-width: 620px; }
+  .jm-feature-grid, .jm-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .jm-shell { padding: 0 16px; }
+  .jm-hero { padding-top: 32px; }
+  .jm-hero h1 { font-size: clamp(32px, 8vw, 42px); }
+  .jm-section { padding: 44px 0; }
+  .jm-section-tint { padding: 32px 18px; border-radius: 16px; }
+  .jm-benefits { grid-template-columns: 1fr; gap: 14px; }
+  .jm-score-explainer { padding: 26px 20px; }
+  .jm-final-cta { margin-bottom: 40px; padding: 36px 20px; }
+}
+@media (max-width: 480px) {
+  .jm-feature-grid, .jm-steps { grid-template-columns: 1fr; gap: 14px; }
+  .jm-actions { align-items: stretch; flex-direction: column; }
+  .jm-actions .jm-btn, .jm-centered .jm-btn { width: 100%; }
+  .jm-card, .jm-steps > article, .jm-benefits > div { padding: 20px; }
+  .jm-hero-visual { padding: 18px; }
+  .jm-faqs details { padding: 0 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jm-page .jm-btn { transition: none; }
+  .jm-page .jm-btn:hover { transform: none; }
+}

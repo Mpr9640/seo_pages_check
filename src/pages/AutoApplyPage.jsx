@@ -1,9 +1,9 @@
 import React from "react";
 import "./auto-apply.css";
 
-const JOBS_URL = "https://o1jobaid.com/app/jobs-view";
+const JOBS_URL = "https://o1jobaid.com/app/jobs";
 // Replace with the verified extension store URL when integrating.
-const EXTENSION_URL = JOBS_URL;
+const EXTENSION_URL = 'https://chromewebstore.google.com/detail/o1-job-aid-ai-matching-at/gmjpincnpoicfljljfldcodlglhdefem';
 
 const workflows = [
   { title: "Individual application autofill", who: "Open a supported job application and start Autofill from the extension.", action: "The extension recognizes fields, fills supported answers, handles available documents, and progresses through supported steps." },
@@ -58,7 +58,7 @@ const features = [
   ["Queue tracking", "Distinguish successful submissions from review-needed and failed attempts."],
 ];
 
-const platforms = ["Greenhouse", "Lever", "Ashby", "Workday", "SmartRecruiters", "Workable", "iCIMS", "Oracle", "SAP SuccessFactors", "Jobvite", "Paylocity"];
+const platforms = ["Greenhouse", "Lever", "Ashby", "Workday", "SmartRecruiters", "Workable", "iCIMS", "Oracle", "SAP SuccessFactors", "Jobvite", "Paylocity", "50+ other platforms"];
 
 const faqs = [
   ["What is job application autofill?", "Job application autofill uses saved candidate information to populate supported application forms. o1 Job Aid also supports certain application questions, document uploads, and multi-step workflows."],
