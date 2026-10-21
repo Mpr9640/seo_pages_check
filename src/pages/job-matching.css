@@ -1,4 +1,71 @@
-.jm-step-number { display: inline-block; margin-bottom: 15px; color: var(--jm-green); font-size: 27px; font-weight: 850; line-height: 1.2; }
+/* o1JobAid Job Matching Analysis.
+   Complete stylesheet for JobMatchingAnalysisPage.jsx.
+   Typography, spacing, palette and breakpoints follow resume-builder.css.
+   All selectors are scoped to jm classes; no global resets are required. */
+.jm-page {
+  --jm-green: #008a3a;
+  --jm-ink: #12261e;
+  --jm-muted: #53675d;
+  --jm-border: #dce9e0;
+  color: var(--jm-ink);
+  background: #fbfdfb;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.65;
+  min-height: 100vh;
+  padding-bottom: 1px;
+  overflow-wrap: break-word;
+}
+.jm-page *, .jm-page *::before, .jm-page *::after { box-sizing: border-box; }
+.jm-page h1, .jm-page h2, .jm-page h3, .jm-page p { margin-top: 0; }
+.jm-page h1, .jm-page h2, .jm-page h3 { color: var(--jm-ink); }
+.jm-page p, .jm-page small { color: var(--jm-muted); }
+.jm-page p { margin-bottom: 16px; }
+.jm-page p strong { color: var(--jm-ink); }
+.jm-page a { color: var(--jm-green); text-decoration: none; }
+.jm-page a:focus-visible, .jm-page summary:focus-visible { outline: 3px solid #008a3a; outline-offset: 5px; }
+.jm-page section[id] { scroll-margin-top: 24px; }
+.jm-shell { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.jm-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--jm-border); }
+
+/* Hero and actions */
+.jm-hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); align-items: center; gap: 60px; padding: 55px 0 80px; }
+.jm-hero > *, .jm-feature-grid > *, .jm-steps > *, .jm-benefits > * { min-width: 0; }
+.jm-eyebrow, .jm-kicker { display: inline-block; color: var(--jm-green); font-size: 12px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.jm-hero h1 { margin: 20px 0; font-size: clamp(38px, 4.6vw, 60px); line-height: 1.08; letter-spacing: -.045em; }
+.jm-hero > div > p { font-size: 17px; line-height: 1.75; }
+.jm-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+.jm-page .jm-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; max-width: 100%; padding: 14px 20px; border: 1px solid transparent; border-radius: 12px; font-size: 14px; font-weight: 700; line-height: 1.5; text-align: center; transition: transform .18s, box-shadow .18s; }
+.jm-page .jm-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px #123c231a; }
+.jm-page .jm-btn-primary { color: #fff; background: var(--jm-green); }
+.jm-page .jm-btn-outline { color: var(--jm-ink); background: #fff; border-color: var(--jm-border); }
+.jm-hero > div > .jm-note { margin: 18px 0 0; font-size: 13px; color: #426451; }
+
+/* Illustrative score preview */
+.jm-hero-visual { padding: 20px; background: #eaf3ed; border: 1px solid #cfe4d5; border-radius: 20px; box-shadow: 0 20px 55px #0b38201c; }
+.jm-preview-title { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 14px; font-weight: 800; }
+.jm-preview-title > span { padding: 4px 9px; border-radius: 100px; background: #eef8f0; color: #426451; font-size: 11px; font-weight: 650; }
+.jm-score { display: flex; flex-direction: column; align-items: center; gap: 5px; margin: 22px 0; padding: 23px 12px; background: #fff; border-radius: 15px; text-align: center; }
+.jm-score > span { color: var(--jm-muted); font-size: 13px; font-weight: 650; }
+.jm-score strong { color: var(--jm-green); font-size: 64px; font-weight: 850; letter-spacing: -.05em; line-height: 1.1; }
+.jm-score small { font-size: 11px; }
+.jm-bars > div:not(.jm-bar) { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: 13px; }
+.jm-bars b { flex-shrink: 0; font-variant-numeric: tabular-nums; }
+.jm-bar { height: 8px; margin: 7px 0 18px; overflow: hidden; border-radius: 100px; background: var(--jm-border); }
+.jm-bar i { display: block; height: 100%; max-width: 100%; border-radius: inherit; background: var(--jm-green); }
+.jm-hero-visual > p { margin: 5px 0 0; font-size: 12px; }
+
+/* Features, steps and benefits */
+.jm-section { padding: 65px 0; }
+.jm-heading { max-width: 760px; margin-bottom: 30px; }
+.jm-heading h2, .jm-score-explainer h2, .jm-final-cta h2 { margin: 12px 0; font-size: clamp(29px, 3.5vw, 43px); line-height: 1.18; letter-spacing: -.035em; }
+.jm-heading > p { margin-bottom: 0; font-size: 16px; }
+.jm-feature-grid, .jm-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.jm-card, .jm-steps > article { padding: 24px; border: 1px solid var(--jm-border); border-radius: 16px; background: #fff; }
+.jm-card h3, .jm-steps h3, .jm-benefits h3 { margin: 0 0 11px; font-size: 18px; line-height: 1.4; }
+.jm-card p, .jm-steps p, .jm-benefits p { margin-bottom: 0; font-size: 14px; }
+.jm-hint { padding: 16px 20px; margin: 22px 0 0; border-left: 3px solid var(--jm-green); border-radius: 0 10px 10px 0; background: #eef8f0; font-size: 13px; }
+.jm-section-tint { padding: 48px 28px; border-radius: 22px; background: #eef8f0; }
+.jm-step-number { display: inline-block; margin-bottom: 17px; color: var(--jm-green); font-size: 24px; font-weight: 800; line-height: 1.2; }
 .jm-centered { margin-top: 28px; text-align: center; }
 .jm-benefits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .jm-benefits > div { padding: 24px; border: 1px solid var(--jm-border); border-radius: 16px; background: #fff; }
@@ -15,10 +82,10 @@
 .jm-faqs summary:hover { color: var(--jm-green); }
 .jm-faqs details[open] { border-color: #96c9a5; }
 .jm-faqs details[open] summary { color: var(--jm-green); }
-.jm-faqs details p { margin: 0 0 19px; font-size: 14px; line-height: 1.8; }
+.jm-faqs details p { margin: 0 0 19px; font-size: 14px; line-height: 1.7; }
 
 /* Final call to action */
-.jm-final-cta { margin: 8px 0 64px; padding: 52px 28px; border-radius: 22px; background: linear-gradient(110deg, #008e45, #087c78); color: #fff; text-align: center; }
+.jm-final-cta { margin: 40px 0; padding: 55px 20px; border-radius: 22px; background: linear-gradient(110deg, #008e45, #087c78); color: #fff; text-align: center; }
 .jm-final-cta h2 { max-width: 760px; margin: 0 auto 16px; color: #fff; }
 .jm-final-cta p { max-width: 680px; margin: 0 auto; color: #e0f7e9; }
 .jm-final-cta .jm-actions { justify-content: center; }
@@ -26,22 +93,22 @@
 .jm-final-cta a:focus-visible { outline-color: #fff; }
 
 /* Tablet and mobile */
-@media (max-width: 1000px) {
-  .jm-hero { grid-template-columns: 1fr; gap: 32px; padding: 44px 0 56px; }
+@media (max-width: 850px) {
+  .jm-hero { grid-template-columns: 1fr; gap: 25px; padding: 25px 0 80px; }
   .jm-hero-visual { width: 100%; max-width: 620px; }
   .jm-feature-grid, .jm-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@media (max-width: 640px) {
+@media (max-width: 580px) {
   .jm-shell { padding: 0 16px; }
-  .jm-hero { padding-top: 32px; }
-  .jm-hero h1 { font-size: clamp(32px, 8vw, 42px); }
-  .jm-section { padding: 44px 0; }
+  .jm-hero { padding-top: 25px; padding-bottom: 25px; }
+  .jm-hero h1 { font-size: 36px; }
+  .jm-section { padding: 42px 0; }
   .jm-section-tint { padding: 32px 18px; border-radius: 16px; }
   .jm-benefits { grid-template-columns: 1fr; gap: 14px; }
   .jm-score-explainer { padding: 26px 20px; }
   .jm-final-cta { margin-bottom: 40px; padding: 36px 20px; }
 }
-@media (max-width: 480px) {
+@media (max-width: 580px) {
   .jm-feature-grid, .jm-steps { grid-template-columns: 1fr; gap: 14px; }
   .jm-actions { align-items: stretch; flex-direction: column; }
   .jm-actions .jm-btn, .jm-centered .jm-btn { width: 100%; }
