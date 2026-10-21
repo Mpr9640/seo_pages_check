@@ -68,8 +68,8 @@ export default function ResumeBuilderPage() {
 }
 
 export const resumePageSeo = {
-  title: 'AI Resume Builder | ATS Friendly Resumes & 46 Templates | o1JobAid',
-  description: 'Build a resume from scratch or tailor it to a job description with o1JobAid AI. Explore 46 templates, ATS feedback, editing, and PDF or DOCX downloads.',
+  title: 'o1JobAid : Build an  ATS Friendly Resumes  For Free',
+  description: 'Build a resume from scratch or tailor it to a job description with o1JobAid Agent ADUGU. Explore 46 templates, ATS feedback, editing, and PDF or DOCX downloads.',
   canonical: `${BASE}`,
   faqCount: FAQS.length,
 };

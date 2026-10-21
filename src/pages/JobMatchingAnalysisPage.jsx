@@ -29,10 +29,10 @@ const steps = [
 function useMetadata() {
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = 'AI Job Matching Analysis & Skill Gap Checker | o1 Job Aid';
+    document.title = 'o1JobAid : AI Job Matching Analysis & Skill Gap Checker';
     const desc = document.querySelector('meta[name="description"]');
     const previousDesc = desc?.getAttribute('content');
-    if (desc) desc.setAttribute('content', 'Compare your profile with job requirements. See your job match score, matched skills, and skill gaps with o1 Job Aid before you apply.');
+    if (desc) desc.setAttribute('content', 'Compare your profile with job requirements. See your job match score, matched skills, and skill gaps with an agent ADUGU before you apply.');
     return () => { document.title = previousTitle; if (desc && previousDesc !== null) desc.setAttribute('content', previousDesc); };
   }, []);
 }
