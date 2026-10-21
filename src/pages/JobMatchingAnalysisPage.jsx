@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
 import './job-matching.css';
 
-const JOBS_URL = 'https://o1jobaid.com/app/jobs';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+
+
+const JOBS_URL = import.meta.env.VITE_JOBS_PAGE;
 const faqs = [
   ['What is job matching analysis?', 'Job matching analysis compares your profile with the requirements in a specific job listing. o1 Job Aid shows an overall match percentage, relevant matched skills, and skill gaps to help you evaluate the opportunity.'],
   ['How does o1 Job Aid calculate my job match score?', 'The analysis considers skills supported by your profile alongside relevant experience and education requirements from the job listing. The overall percentage summarizes the alignment, while the breakdown helps you understand the result.'],
@@ -48,6 +52,27 @@ export default function JobMatchingAnalysisPage() {
       <section className="jm-score-explainer" aria-labelledby="score-title"><div><h2 id="score-title">What does your job match score mean?</h2><p>Your job match score estimates how closely the information in your profile aligns with the job listing. It considers skills overlap, relevant experience, and education. The breakdown helps explain the result.</p><p>A lower score may indicate missing qualifications, a career transition, or profile details that have not been added yet. <strong>A higher score does not guarantee an interview or job offer.</strong></p></div></section>
       <section className="jm-section" id="job-match-faqs" aria-labelledby="faq-title"><div className="jm-heading"><span className="jm-kicker">COMMON QUESTIONS</span><h2 id="faq-title">Frequently asked questions about job matching analysis</h2><p>Clear answers about AI job matching, match percentages, skills alignment, and job compatibility.</p></div><div className="jm-faqs">{faqs.map(([question,answer])=><details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></section>
       <section className="jm-final-cta"><h2>Understand your fit before your next application</h2><p>See where your background aligns, review the gaps, and prepare for your next opportunity with a clearer plan.</p><div className="jm-actions"><a href={JOBS_URL} className="jm-btn jm-btn-light">Analyze My Job Match </a></div></section>
+      <nav className="jm-related" aria-label="Explore related tools">
+        <strong>Explore related tools</strong>
+
+        {[
+          ['/adugu', 'ADUGU AI Assistant'],
+          ['/ai-resume-builder', 'AI Resume Builder'],
+          ['/auto-apply', 'Auto Apply & Autofill'],
+          ['/chrome-extension', 'Chrome Extension'],
+          ['/job-application-tracker', 'Job Application Tracker'],
+        ].map(([path, label]) => (
+          <Link
+            key={path}
+            to={path}
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            {label}
+            <ArrowRight size={14} aria-hidden="true" />
+          </Link>
+        ))}
+      </nav>
+
       
     </div>
   </main>;

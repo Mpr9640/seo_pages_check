@@ -1,3 +1,4 @@
+
 .rb-page {
   --rb-green: #008a3a;
   --rb-ink: #12261e;
@@ -115,6 +116,8 @@
   color: var(--rb-green);
 }
 
+/* Resume preview */
+
 .rb-preview {
   background: #eaf3ed;
   border: 1px solid #cfe4d5;
@@ -197,6 +200,8 @@
   color: #285d3e;
 }
 
+/* Sections and headings */
+
 .rb-section {
   padding: 65px 0;
 }
@@ -223,6 +228,8 @@
   color: var(--rb-muted);
   line-height: 1.75;
 }
+
+/* Resume creation mode switch */
 
 .rb-mode-switch {
   display: flex;
@@ -272,6 +279,8 @@
   font-weight: 750;
 }
 
+/* Steps and features */
+
 .rb-steps,
 .rb-feature-grid {
   display: grid;
@@ -303,6 +312,8 @@
 .rb-feature p {
   font-size: 14px;
 }
+
+/* Resume templates */
 
 .rb-template-grid {
   display: grid;
@@ -343,6 +354,8 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
+/* ATS information section */
+
 .rb-ats {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
@@ -369,6 +382,8 @@
 .rb-ats-card p {
   margin: 0;
 }
+
+/* Frequently asked questions */
 
 .rb-faq-groups {
   display: grid;
@@ -420,6 +435,8 @@
   margin-bottom: 3px;
 }
 
+/* Final call to action */
+
 .rb-cta {
   text-align: center;
   background: linear-gradient(110deg, #008e45, #087c78);
@@ -444,17 +461,50 @@
   margin-top: 12px;
 }
 
+/*
+ * Bottom page navigation
+ * Matches ADUGU reference styling
+ */
+
 .rb-related {
   display: flex;
-  gap: 18px;
   flex-wrap: wrap;
-  padding: 22px 0 50px;
-  font-size: 14px;
+  align-items: center;
+  gap: 16px 25px;
+  padding-top: 23px;
+  padding-bottom: 40px;
+  border-top: 1px solid var(--rb-border);
+  font-size: 13px;
 }
 
-.rb-related span {
-  font-weight: 750;
+.rb-related strong {
+  margin-right: 5px;
+  color: var(--rb-ink);
 }
+
+.rb-page .rb-related a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #007e38;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.rb-page .rb-related a:hover {
+  text-decoration: underline;
+}
+
+.rb-page .rb-related a svg {
+  flex-shrink: 0;
+}
+
+.rb-page .rb-related a:focus-visible {
+  outline: 3px solid #34b878;
+  outline-offset: 4px;
+}
+
+/* Tablet responsive layout */
 
 @media (max-width: 850px) {
   .rb-hero,
@@ -481,6 +531,8 @@
     padding: 28px;
   }
 }
+
+/* Mobile responsive layout */
 
 @media (max-width: 580px) {
   .rb-container {
@@ -521,5 +573,9 @@
 
   .rb-ats {
     gap: 20px;
+  }
+
+  .rb-related {
+    gap: 16px 25px;
   }
 }

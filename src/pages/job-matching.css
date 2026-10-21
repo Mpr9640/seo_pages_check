@@ -92,6 +92,48 @@
 .jm-page .jm-btn-light { background: #fff; color: #006c38; }
 .jm-final-cta a:focus-visible { outline-color: #fff; }
 
+
+/* Bottom navigation — matches ADUGU reference page */
+.jm-related {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 25px;
+  padding-top: 23px;
+  padding-bottom: 40px;
+  border-top: 1px solid var(--jm-border);
+  font-size: 13px;
+}
+
+.jm-related strong {
+  margin-right: 5px;
+  color: var(--jm-ink);
+}
+
+.jm-page .jm-related a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #007e38;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.jm-page .jm-related a:hover {
+  text-decoration: underline;
+}
+
+.jm-page .jm-related a:focus-visible {
+  outline: 3px solid #34b878;
+  outline-offset: 4px;
+}
+
+@media (max-width: 580px) {
+  .jm-related {
+    gap: 16px 25px;
+  }
+}
+
 /* Tablet and mobile */
 @media (max-width: 850px) {
   .jm-hero { grid-template-columns: 1fr; gap: 25px; padding: 25px 0 80px; }
@@ -107,6 +149,7 @@
   .jm-benefits { grid-template-columns: 1fr; gap: 14px; }
   .jm-score-explainer { padding: 26px 20px; }
   .jm-final-cta { margin-bottom: 40px; padding: 36px 20px; }
+  .ad-container { padding-left: 18px; padding-right: 18px; }
 }
 @media (max-width: 580px) {
   .jm-feature-grid, .jm-steps { grid-template-columns: 1fr; gap: 14px; }
@@ -115,6 +158,7 @@
   .jm-card, .jm-steps > article, .jm-benefits > div { padding: 20px; }
   .jm-hero-visual { padding: 18px; }
   .jm-faqs details { padding: 0 16px; }
+  .ad-container { padding-left: 18px; padding-right: 18px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .jm-page .jm-btn { transition: none; }

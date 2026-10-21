@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import './resume-builder.css';
 
-const BASE = 'https://o1jobaid.com/app/agent';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+
+
+const BASE = import.meta.env.VITE_AGENT_PAGE;
 const FAQS = [
   { group: 'Getting started', q: 'How can I build a resume from scratch with AI?', a: 'Open the o1JobAid Agent page and choose to create a resume from scratch. The AI uses the information in your user profile to prepare a resume, which you can then review, edit, save, regenerate, or download.' },
   { group: 'Getting started', q: 'Can I create a professional resume without writing every section myself?', a: 'Yes. o1JobAid uses your profile information to help draft and organize resume content. Review every section before using it in an application to make sure it accurately represents your background.' },
@@ -23,7 +27,7 @@ const FAQS = [
   { group: 'Audience', q: 'Can experienced professionals create role specific resumes?', a: 'Yes. o1JobAid supports job description based resume creation using an existing professional profile and the target job description, while prioritizing truthful experience.' },
 ];
 
-const TEMPLATE_NAMES = ['Harvard', 'Jake’s Resume', 'Deedy Resume', 'ATS Professional', 'Graduate / Entry Level', 'Modern Executive', 'IT / Data', 'Classic', 'Minimal', 'Consulting', 'Corporate Elite', 'Healthcare / Clinical'];
+const TEMPLATE_NAMES = ['Harvard', 'Jake’s Resume', 'Deedy Resume', 'ATS Professional', 'Graduate / Entry Level', 'Modern Executive', 'IT / Data', 'Classic', 'Minimal', 'Consulting', 'Corporate Elite', 'Healthcare / Clinical', '39+ more'];
 const FLOW = [
   { title: 'Choose how to start', text: 'Build from your profile on the Agent page, or select a job description to tailor your resume.' },
   { title: 'AI prepares your resume', text: 'Your profile remains the source of truth; job specific creation also considers the target role.' },
@@ -61,8 +65,30 @@ export default function ResumeBuilderPage() {
       ].map(item=><article className="rb-feature" key={item.title}><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></section>
       <section className="rb-section rb-ats"><div><span className="rb-eyebrow">ATS AWARE, NOT ATS GUARANTEED</span><h2>Make your resume easier to review without sacrificing accuracy</h2><p>o1JobAid provides ATS oriented resume feedback and job description based tailoring. It can help surface relevant skills and improve resume presentation, but no tool can guarantee that every employer's ATS will accept, rank, or shortlist a resume.</p><a href="#resume-faqs" className="rb-inline-link" onClick={(event) => { event.preventDefault(); document.getElementById('resume-faqs')?.scrollIntoView({ behavior: 'smooth' }); }}>Read ATS resume FAQs </a></div><div className="rb-ats-card"><strong>Truthful qualifications first</strong><p>Job requirements inform tailoring. Your actual education, skills, and experience remain the foundation.</p></div></section>
       <FAQSection/>
-      <section className="rb-cta"><h2>Ready to create your next resume?</h2><p>Build from scratch or tailor your resume to a role, then customize and export it.</p><a className="rb-button rb-cta-button" href="https://o1jobaid.com/app/agent">Open AI Resume Builder </a></section>
-      
+      <section className="rb-cta"><h2>Ready to create your next resume?</h2><p>Build from scratch or tailor your resume to a role, then customize and export it.</p><a className="rb-button rb-cta-button" href={BASE}>Open AI Resume Builder </a></section>
+
+      <nav className="rb-related" aria-label="Explore related tools">
+        <strong>Explore related tools</strong>
+
+        {[
+          ['/adugu', 'ADUGU AI Assistant'],
+          ['/job-matching-analysis', 'Job Matching Analysis'],
+          ['/auto-apply', 'Auto Apply & Autofill'],
+          ['/chrome-extension', 'Chrome Extension'],
+          ['/job-application-tracker', 'Job Application Tracker'],
+        ].map(([path, label]) => (
+          <Link
+            key={path}
+            to={path}
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            {label}
+            <ArrowRight size={14} aria-hidden="true" />
+          </Link>
+        ))}
+      </nav>
+
+            
     </div>
   </main>;
 }

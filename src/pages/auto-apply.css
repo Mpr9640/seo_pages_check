@@ -110,6 +110,48 @@
 .aa-final-cta .aa-button-primary { color: #006c38; background: #fff; }
 .aa-final-cta .aa-button-secondary { color: #fff; background: transparent; border-color: #ffffff85; }
 
+
+/* Bottom navigation — matches ADUGU reference page */
+
+.aa-related {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 25px;
+  padding-top: 23px;
+  padding-bottom: 40px;
+  border-top: 1px solid var(--aa-border);
+  font-size: 13px;
+}
+
+.aa-related strong {
+  margin-right: 5px;
+  color: var(--aa-ink);
+}
+
+.aa-page .aa-related a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #007e38;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.aa-page .aa-related a:hover {
+  text-decoration: underline;
+}
+
+.aa-page .aa-related a svg {
+  flex-shrink: 0;
+}
+
+.aa-page .aa-related a:focus-visible {
+  outline: 3px solid #34b878;
+  outline-offset: 4px;
+}
+
+
 @media (max-width: 1000px) {
   .aa-hero { grid-template-columns: 1fr; gap: 30px; padding: 34px 0 65px; }
   .aa-preview { max-width: 650px; }
@@ -131,6 +173,9 @@
   .aa-button { width: 100%; }
   .aa-actions { align-items: stretch; }
   .aa-final-cta { padding: 42px 18px; }
+  .aa-related {
+    gap: 16px 25px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -7,9 +7,11 @@ import {
 } from "lucide-react";
 import "./adugu.css";
 
-const AGENT_URL = "https://o1jobaid.com/app/agent";
-const JOBS_URL = "https://o1jobaid.com/app/jobs";
-const HOME_URL = "https://o1jobaid.com/home";
+
+const AGENT_URL = import.meta.env.VITE_AGENT_PAGE;
+const JOBS_URL = import.meta.env.VITE_JOBS_PAGE;
+const HOME_URL = import.meta.env.VITE_HOME_PAGE;
+
 const features = [
   { id: "job-discovery", icon: Search, tag: "AI job matching", title: "Find Jobs That Match Your Skills and Preferences", text: "Describe the opportunity you want in everyday language. ADUGU searches the o1 Job Aid job catalog using available filters such as role, location, experience level, work type, salary, and sponsorship status. Where match data is available, review how a role aligns with your profile.", prompts: ["Find remote data analyst jobs matching my profile.", "Show software engineering roles in New York.", "Find jobs with a match score above 80%.", "Show recently posted roles that mention sponsorship."], note: "Review the job requirements and match details before deciding which opportunities deserve your time.", cta: "Find Matching Jobs", url: AGENT_URL },
   { id: "resume", icon: FileText, tag: "AI resume builder", title: "Build and Tailor Your Resume With AI", text: "Ask ADUGU to build a resume from your saved profile or tailor one to a job description. Review and edit the generated document in the builder. Accurate experience, skills, education, and achievements in your profile give it useful material to work with.", prompts: ["Build a resume from my profile.", "Tailor my resume to this job description.", "Rewrite the summary in the resume we just created.", "Make the experience bullets more concise."], note: "For a resume already built in the conversation, ask ADUGU to revise a specific section without rebuilding the whole document.", cta: "Build My Resume", url: AGENT_URL },
@@ -33,6 +35,7 @@ const faqs = [
 
 // Keep public SEO pages inside HashRouter, while app URLs open normally.
 // In-page anchors scroll without changing the HashRouter route.
+/*
 function PageLink({ href, children, onClick, ...props }) {
   if (href.startsWith("#")) {
     return (
@@ -55,6 +58,48 @@ function PageLink({ href, children, onClick, ...props }) {
 
   if (href.startsWith("/")) {
     return <Link to={href} onClick={onClick} {...props}>{children}</Link>;
+  }
+
+  // Full URLs to /app/agent, /app/jobs, etc. must NOT be routed
+  // through the public site's HashRouter.
+  return <a href={href} onClick={onClick} {...props}>{children}</a>;
+}
+*/
+
+function PageLink({ href, children, onClick, ...props }) {
+  if (href.startsWith("#")) {
+    return (
+      <a
+        href={href}
+        {...props}
+        onClick={(event) => {
+          event.preventDefault();
+          onClick?.(event);
+          const target = document.getElementById(href.slice(1));
+          if (!target) return;
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          target.focus?.({ preventScroll: true });
+        }}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  if (href.startsWith("/")) {
+    return (
+      <Link
+        to={href}
+        {...props}
+        onClick={(event) => {
+          onClick?.(event);
+          // Forces the window to jump to the top left corner immediately
+          window.scrollTo(0, 0); 
+        }}
+      >
+        {children}
+      </Link>
+    );
   }
 
   // Full URLs to /app/agent, /app/jobs, etc. must NOT be routed
@@ -128,8 +173,7 @@ export default function ADUGUPage() {
       <section className="ad-intro ad-section" aria-labelledby="ad-intro-title"><div className="ad-container ad-intro-inner"><span className="ad-eyebrow">A connected career workspace</span><h2 id="ad-intro-title">Give Your Job Search a Clear Next Step</h2><p>A job search brings together your experience, different job requirements, several resume versions, and applications at different stages. ADUGU helps you work with that information inside o1 Job Aid.</p><p>Ask which jobs match your background. Create a resume for a role. Review upcoming interviews. Find an achievement in your saved resume. Get an answer about your applications without searching through every page yourself.</p></div></section>
 
       <section id="capabilities" className="ad-container ad-section" aria-labelledby="ad-capabilities-title"><div className="ad-section-heading"><span className="ad-eyebrow">What ADUGU can do</span><h2 id="ad-capabilities-title">From Job Search to Application Preparation</h2><p>Use natural-language requests to work with the supported tools and information in your career workspace.</p></div><div className="ad-features">{features.map((feature, i) => <Feature feature={feature} index={i} key={feature.id}/>)}</div></section>
-
-      <section className="ad-section ad-tint" aria-labelledby="ad-autofill-title"><div className="ad-container ad-split"><div><span className="ad-eyebrow"><MousePointerClick size={16}/> Connected application workflow</span><h2 id="ad-autofill-title">Continue From Preparation to Application Autofill</h2><p>Once you have reviewed a role and prepared your documents, continue through o1 Job Aid’s application tools. The Chrome extension fills supported application forms using your profile. Auto Apply lets you select eligible jobs and send them to the extension queue.</p><p>ADUGU provides a conversational entry point to your career workspace. Application execution depends on the supported web app and extension workflows—not a chat request alone.</p><Action href="/auto-apply">Explore Auto Apply and Autofill</Action></div><div className="ad-info-card"><div className="ad-info-icon"><BriefcaseBusiness size={27}/></div><h3>Preparation and application are connected, but distinct.</h3><ul><li><CheckCircle2 size={17}/> Review a role and its requirements</li><li><CheckCircle2 size={17}/> Prepare your resume and cover letter</li><li><CheckCircle2 size={17}/> Use supported autofill or eligible Auto Apply queue workflows</li><li><CheckCircle2 size={17}/> Check application outcomes and steps requiring attention</li></ul><PageLink className="ad-text-link" href={JOBS_URL}>Explore jobs in o1 Job Aid <ArrowRight size={16}/></PageLink></div></div></section>
+      <section className="ad-section ad-tint" aria-labelledby="ad-autofill-title"><div className="ad-container ad-split"><div><span className="ad-eyebrow"><MousePointerClick size={16}/> Connected application workflow</span><h2 id="ad-autofill-title">Continue From Preparation to Application Autofill</h2><p>Once you have reviewed a role and prepared your documents, continue through o1 Job Aid’s application tools. The Chrome extension fills supported application forms using your profile. Auto Apply lets you select eligible jobs and send them to the extension queue.</p><p>ADUGU provides a conversational entry point to your career workspace. Application execution depends on the supported web app and extension workflows—not a chat request alone.</p><Action href={JOBS_URL}>Explore Auto Apply and Autofill</Action></div><div className="ad-info-card"><div className="ad-info-icon"><BriefcaseBusiness size={27}/></div><h3>Preparation and application are connected, but distinct.</h3><ul><li><CheckCircle2 size={17}/> Review a role and its requirements</li><li><CheckCircle2 size={17}/> Prepare your resume and cover letter</li><li><CheckCircle2 size={17}/> Use supported autofill or eligible Auto Apply queue workflows</li><li><CheckCircle2 size={17}/> Check application outcomes and steps requiring attention</li></ul><PageLink className="ad-text-link" href={JOBS_URL}>Explore jobs in o1 Job Aid <ArrowRight size={16}/></PageLink></div></div></section>
 
       <section className="ad-section" aria-labelledby="ad-h1b-title"><div className="ad-container ad-h1b"><div className="ad-h1b-icon"><Building2 size={28}/></div><div><span className="ad-eyebrow">Employer research</span><h2 id="ad-h1b-title">Research Employer H-1B Petition History</h2><p>Ask ADUGU about employer-level H-1B petition approval and denial statistics from the USCIS public dataset. Explore available results by employer, fiscal year, industry, or state as part of your research.</p><p className="ad-disclaimer"><ShieldCheck size={16}/> Historical petition activity does not establish whether a specific job currently offers sponsorship.</p></div></div></section>
 
@@ -137,8 +181,8 @@ export default function ADUGUPage() {
 
       <section className="ad-section" id="faq" aria-labelledby="ad-faq-title"><div className="ad-container ad-faq-wrap"><div className="ad-section-heading"><span className="ad-eyebrow">Frequently asked questions</span><h2 id="ad-faq-title">Questions About ADUGU</h2><p>Understand what your AI job search assistant can do—and where account access or other tools are required.</p></div><div className="ad-faq-list">{faqs.map(([q,a])=><details key={q} className="ad-faq-item"><summary>{q}<span className="ad-faq-plus" aria-hidden="true">+</span></summary><p>{a}</p></details>)}</div></div></section>
 
-      <section className="ad-container ad-closing" aria-labelledby="ad-closing-title"><div className="ad-closing-inner"><span className="ad-eyebrow"><Sparkles size={16}/> Your next move starts here</span><h2 id="ad-closing-title">Make Your Next Career Move With ADUGU</h2><p>Find a relevant opportunity. Build the documents it needs. Understand where your applications stand. Start with the question on your mind.</p><div className="ad-actions"><Action href={AGENT_URL}>Start With ADUGU</Action><Action href={HOME_URL} secondary>Explore o1 Job Aid</Action></div><p className="ad-closing-note">Public access has a limited scope. Personalized account tools and document building require sign-in.</p></div></section>
-      <div className="ad-container ad-related"><strong>Explore related tools</strong><PageLink href="/ai-resume-builder">AI Resume Builder <ArrowRight size={14}/></PageLink><PageLink href="/job-matching-analysis">Job Matching Analysis <ArrowRight size={14}/></PageLink><PageLink href="/auto-apply">Auto Apply & Autofill <ArrowRight size={14}/></PageLink></div>
+     {/* <section className="ad-container ad-closing" aria-labelledby="ad-closing-title"><div className="ad-closing-inner"><span className="ad-eyebrow"><Sparkles size={16}/> Your next move starts here</span><h2 id="ad-closing-title">Make Your Next Career Move With ADUGU</h2><p>Find a relevant opportunity. Build the documents it needs. Understand where your applications stand. Start with the question on your mind.</p><div className="ad-actions"><Action href={AGENT_URL}>Start With ADUGU</Action><Action href={HOME_URL} secondary>Explore o1 Job Aid</Action></div><p className="ad-closing-note">Public access has a limited scope. Personalized account tools and document building require sign-in.</p></div></section> */}
+      <div className="ad-container ad-related"><strong>Explore related tools</strong><PageLink href="/job-matching-analysis">Job Matching Analysis <ArrowRight size={14}/></PageLink><PageLink href="/ai-resume-builder">AI Resume Builder <ArrowRight size={14}/></PageLink><PageLink href="/auto-apply">Auto Apply & Autofill <ArrowRight size={14}/></PageLink><PageLink href="/chrome-extension">chrome extension <ArrowRight size={14}/></PageLink><PageLink href="/job-application-tracker">Job Application Tracker <ArrowRight size={14}/></PageLink></div>
     </main>
   );
 }

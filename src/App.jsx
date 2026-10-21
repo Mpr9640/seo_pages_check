@@ -5,6 +5,8 @@ import ResumeBuilderPage from './pages/ResumeBuilderPage.jsx';
 import JobMatchingAnalysisPage from './pages/JobMatchingAnalysisPage.jsx';
 import AutoApplyPage from './pages/AutoApplyPage.jsx';
 import ADUGUPage from './pages/AduguPage.jsx';
+import JobApplicationTrackerPage from './pages/JobApplicationTrackerPage.jsx';
+import ChromeExtensionPage from './pages/ChromeExtensionPage.jsx';
 
 export default function App() {
   return (
@@ -38,6 +40,15 @@ export default function App() {
         element={
           <Navigate to="/job-matching-analysis" replace />
         }
+      />
+
+      <Route
+        path="/job-application-tracker"
+        element={<JobApplicationTrackerPage />}
+      />
+      <Route
+        path="/chrome-extension"
+        element={<ChromeExtensionPage />}
       />
 
       <Route

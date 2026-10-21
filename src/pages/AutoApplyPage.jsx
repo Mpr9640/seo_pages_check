@@ -1,9 +1,13 @@
 import React from "react";
 import "./auto-apply.css";
 
-const JOBS_URL = "https://o1jobaid.com/app/jobs";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
+
+
+const JOBS_URL = import.meta.env.VITE_JOBS_PAGE;
 // Replace with the verified extension store URL when integrating.
-const EXTENSION_URL = 'https://chromewebstore.google.com/detail/o1-job-aid-ai-matching-at/gmjpincnpoicfljljfldcodlglhdefem';
+const EXTENSION_URL = import.meta.env.VITE_CHROME_EXTENSION_URL;
 
 const workflows = [
   { title: "Individual application autofill", who: "Open a supported job application and start Autofill from the extension.", action: "The extension recognizes fields, fills supported answers, handles available documents, and progresses through supported steps." },
@@ -167,6 +171,30 @@ export default function AutoApplyPage() {
       </div></section>
 
       <section className="aa-container"><div className="aa-final-cta"><span className="aa-eyebrow">Get started</span><h2>Spend Less Time Repeating Your Application Details</h2><p>Build your profile once, choose relevant jobs, and let o1 Job Aid handle supported application steps while you follow the results.</p><div className="aa-actions"><Button>Start Using Auto Apply</Button><Button secondary href={EXTENSION_URL}>Explore the Autofill Extension</Button></div></div></section>
+
+      <div className="aa-container">
+        <nav className="aa-related" aria-label="Explore related tools">
+          <strong>Explore related tools</strong>
+
+          {[
+            ["/adugu", "ADUGU AI Assistant"],
+            ["/job-matching-analysis", "Job Matching Analysis"],
+            ["/ai-resume-builder", "AI Resume Builder"],
+            ["/chrome-extension", "Chrome Extension"],
+            ["/job-application-tracker", "Job Application Tracker"],
+          ].map(([path, label]) => (
+            <Link
+              key={path}
+              to={path}
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              {label}
+              <ArrowRight size={14} aria-hidden="true" />
+            </Link>
+          ))}
+        </nav>
+      </div>
+
     </main>
   );
 }
