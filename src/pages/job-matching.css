@@ -1,7 +1,7 @@
 /* o1JobAid Job Matching Analysis.
    Complete stylesheet for JobMatchingAnalysisPage.jsx.
    Typography, spacing, palette and breakpoints follow resume-builder.css.
-   All selectors are scoped to jm classes; no global resets are requiredd. */
+   All selectors are scoped to jm classes; no global resets are required. */
 .jm-page {
   --jm-green: #008a3a;
   --jm-ink: #12261e;
